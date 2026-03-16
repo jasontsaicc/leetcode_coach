@@ -416,7 +416,7 @@ Generate from `progress.md` data:
 📊 LeetCode Interview Prep Report
 ═══════════════════════════════════════════
 
-Progress: Problem X/TBD (Phase N)  ████████░░░░░░░░░░░░ XX%
+Progress: Problem X/136 (Phase N)  ████████░░░░░░░░░░░░ XX%
 
 Pattern Mastery Heatmap:
   Phase 0 Foundation:

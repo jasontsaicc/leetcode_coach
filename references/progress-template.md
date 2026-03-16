@@ -16,7 +16,7 @@
 | **Language** | Python |
 | **Session count** | N |
 | **Last weekly review** | Session #N (YYYY-MM-DD) |
-| **Problems solved** | X / TBD |
+| **Problems solved** | X / 136 |
 
 ---
 
@@ -56,7 +56,7 @@
 | Greedy | 0/? | ⬜ | — | |
 | Intervals | 0/? | ⬜ | — | |
 | Math & Geometry | 0/? | ⬜ | — | |
-| Bit Manipulation | 0/? | ⬜ | Phase 3 Gate | |
+| Bit Manipulation | 0/? | ⬜ | Final Gate | |
 
 > Mastery levels: ⬜ Not started │ 🔴 Needs work │ 🟡 Developing │ 🟢 Solid
 > Update mastery after each session based on Feynman Gate + Drill performance.
