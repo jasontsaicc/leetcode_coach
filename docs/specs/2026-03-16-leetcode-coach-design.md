@@ -27,6 +27,7 @@
 | D11 | Feynman Transfer = variation + constraint change | Both types tested per problem |
 | D12 | Study group jump-to mode | Not a separate mode; just router path to any specific problem |
 | D13 | Problem Log in progress tracking | Per-problem record of approach, complexity, notes; SD Coach doesn't need this |
+| D14 | Bilingual mode (English + Traditional Chinese) | User is non-native English speaker; bilingual for Feynman explanations, English Polish for interview prep |
 
 ---
 
@@ -97,7 +98,8 @@
   - Example: "Sliding Window is like a train window sliding across scenery — you only see what's inside the frame"
 - Show the Pattern's **Python template** (pseudocode with blanks)
 - Chunk Map: list 3-5 key concepts for this Pattern
-- For each chunk → Feynman question: "Can you explain this in your own words?"
+- For each chunk → **lightweight Feynman check** (Recall only, no formal pass/fail): "Can you explain this in your own words?"
+- Note: This is NOT the formal Feynman Gate. Step F is the formal gate with both Recall + Transfer + failure escalation.
 
 ### D. Brute Force (10 min) — NEW
 
@@ -140,6 +142,7 @@
 ### G. Mock Interview (10 min)
 
 - Coach gives a **related unseen problem**, timed
+  - Source: Claude generates a variation of the current problem (similar pattern, different constraints/data types). NOT drawn from curriculum to avoid spoiling future problems.
 - Student must think aloud + write code
 - Feedback using **Tiered Scorecard** (see below)
 - **Interviewer Follow-Up Preview:**
@@ -159,7 +162,7 @@
   - 🔴 Mistakes & Misconceptions (mandatory, challenge if student says "none")
   - 🎤 Interview Phrasing ("I'd approach this by...")
   - Complexity quick-ref: Brute O(?) → Optimal O(?)
-- **Cross-Verification:** "Check NeetCode's video for this problem. If their approach differs, bring it up next session."
+- **Cross-Verification:** "After the session, look up this problem on NeetCode or LeetCode discussions. If you find a different approach, bring it up next session."
 
 ### I. Progress Update (2 min)
 
@@ -181,31 +184,52 @@
 
 ### Phase 0: Foundation Patterns
 
-**Categories:** Arrays & Hashing (9), Two Pointers (5), Sliding Window (6), Stack (6)
-**~20 problems** (Easy + Medium from NeetCode 150) + interview extras marked with ★
+**Categories:** Arrays & Hashing, Two Pointers, Sliding Window, Stack
+**Problem count:** TBD — exact count determined when building curriculum.md by filtering NeetCode 150 Easy+Medium per category + interview extras. Category numbers in parentheses below are total NeetCode 150 counts (including Hard).
 
-Phase Gate 0 → 1: One unseen Easy problem, 15 min, must produce working code + correct complexity.
+Phase Gate 0 → 1: One unseen Easy problem, 15 min, must produce working code. (Phase 0 does not require complexity analysis — that starts in Phase 1.)
 
 ### Phase 1: Core Data Structures
 
-**Categories:** Binary Search (7), Linked List (11), Trees (15), Heap/Priority Queue (7)
-**~28 problems** (Easy + Medium) + interview extras
+**Categories:** Binary Search, Linked List, Trees, Heap/Priority Queue
+**Problem count:** TBD (Easy + Medium from NeetCode 150 + interview extras)
 
 Phase Gate 1 → 2: One unseen Medium problem, 25 min, Scorecard ≥ 3/5.
 
 ### Phase 2: Advanced Algorithms
 
-**Categories:** Backtracking (10), Tries (3), Graphs (13), Advanced Graphs (6)
-**~25 problems** (Easy + Medium) + interview extras
+**Categories:** Backtracking, Tries, Graphs, Advanced Graphs
+**Problem count:** TBD (Easy + Medium from NeetCode 150 + interview extras)
 
 Phase Gate 2 → 3: One unseen Medium problem, 25 min, Scorecard ≥ 3/5.
 
 ### Phase 3: Optimization Techniques
 
-**Categories:** 1-D DP (12), 2-D DP (11), Greedy (8), Intervals (6), Math & Geometry (8), Bit Manipulation (7)
-**~35 problems** (Easy + Medium) + interview extras
+**Categories:** 1-D DP, 2-D DP, Greedy, Intervals, Math & Geometry, Bit Manipulation
+**Problem count:** TBD (Easy + Medium from NeetCode 150 + interview extras)
 
-Final Gate: Mock interview — 2 Medium problems, 45 min, both Scorecard ≥ 4/7.
+Final Gate: Mock interview — 2 Medium problems, 45 min, both Scorecard ≥ 5/7.
+
+### Phase Gate Failure Protocol
+
+```
+Attempt 1: Fail
+  → Identify 2-3 weakest Patterns from the attempt
+  → Run targeted drill on each (Feynman Gate + practice problem)
+  → Retry gate with a DIFFERENT unseen problem
+
+Attempt 2: Fail
+  → Run a full Weekly Review covering all Patterns in the Phase
+  → Focus extra time on previously weak areas
+  → Retry gate with a DIFFERENT unseen problem
+
+Attempt 3: Fail
+  → Show Progress Report to identify systemic weakness
+  → Offer: "We can continue to the next Phase with a 🟡 flag on these
+     Patterns, and I'll revisit them during Weekly Reviews. Or we can
+     spend more time here. What do you prefer?"
+  → Student decides — record choice in progress.md Phase Gate Results
+```
 
 ### Prerequisites (per category)
 
@@ -314,7 +338,7 @@ Pass threshold: ≥ 60% (2/3, 3/5, 5/7).
 | Language | Python |
 | Session count | N |
 | Last weekly review | Session #N (YYYY-MM-DD) |
-| Problems solved | X / ~110 |
+| Problems solved | X / TBD |
 
 ### Current Session (Breakpoint)
 
@@ -386,6 +410,65 @@ Replaces normal session when triggered.
 
 ---
 
+## Language Configuration
+
+Ask the student their language preference at first session start.
+
+| Mode | Behavior |
+|------|----------|
+| **English** (default) | All teaching in English. Technical terms in English. |
+| **Bilingual** | English for technical content, student's native language for Feynman-style plain explanations. Student can respond in either language. |
+
+If bilingual mode is active:
+- After each student response, provide a brief **English Polish**: a natural, interview-ready version of what they said
+- Format: `💬 English Polish: "[polished version]"`
+- Don't explain grammar — just show the improved version
+- Especially valuable for non-native speakers preparing for English-language interviews
+
+---
+
+## Progress Report
+
+### Trigger
+
+- Student asks: "my progress", "how am I doing", "progress report"
+- Automatically shown when passing a Phase Gate
+- Shown during Weekly Review (abbreviated version)
+
+### Format
+
+Generate from `progress.md` data:
+
+```
+📊 LeetCode Interview Prep Report
+═══════════════════════════════════════════
+
+Progress: Problem X/TBD (Phase N)  ████████░░░░░░░░░░░░ XX%
+
+Pattern Mastery Heatmap:
+  Phase 0 Foundation:
+  Arrays & Hashing    ████████████████████ 🟢 (7/9)
+  Two Pointers        ████████████████░░░░ 🟡 (3/5)
+  Sliding Window      ████████░░░░░░░░░░░░ 🔴 (1/6)
+  Stack               ░░░░░░░░░░░░░░░░░░░░ ⬜ (0/6)
+
+Interview Drill Trend:
+  Phase 0 avg: X.X/3 → X.X/3 📈/📉
+
+Complexity Accuracy:
+  Last 10 problems: X/10 correct on first try
+
+Top Unresolved Mistakes:
+  1. [mistake from Mistake Registry]
+  2. [mistake from Mistake Registry]
+
+💪 Strength: [strongest Pattern]
+🎯 Focus area: [weakest Pattern]
+📋 Patterns summarized: X/18
+```
+
+---
+
 ## Quick Start Router
 
 When this skill activates:
@@ -405,9 +488,9 @@ When this skill activates:
 > "Before we start, let me see where you are. Can you solve this: Given an array of integers, return true if any value appears at least twice. Take 3 minutes."
 
 Based on response:
-- **Solves it with optimal approach** → can move faster through Phase 0
-- **Solves it with brute force** → Phase 0 pacing is right
-- **Struggles** → reassure, slow down Phase 0 pacing
+- **Strong** (optimal approach, explains complexity) → skip first Easy problem per category in Phase 0, go straight to Mediums
+- **Medium** (brute force, some structure) → follow Phase 0 curriculum as written
+- **Struggles** (doesn't know where to start) → reassure, add extra Easy problems from interview extras pool before Mediums
 
 ---
 
@@ -504,6 +587,37 @@ def dynamic_window(s):
 | 18 | adversarial | Student asks for direct answer → refuse, guide |
 | 19 | adversarial | Student asks SD question → redirect to SD Coach |
 | 20 | adversarial | Student memorized answer but can't explain → detect, reteach |
+
+---
+
+## SKILL.md Frontmatter
+
+```yaml
+---
+name: leetcode-coach
+description: LeetCode interview coaching skill using Feynman + Simon learning methods. Guides students through NeetCode 150 (Easy + Medium) with pattern-based teaching, progressive brute-to-optimal solving, and mock interviews. Use PROACTIVELY when the user mentions LeetCode, coding interview prep, algorithm practice, NeetCode, data structures and algorithms, or wants to practice any coding pattern (sliding window, two pointers, dynamic programming, etc.). Also trigger when the user asks to review algorithms, solve coding problems, or prepare for technical coding interviews.
+---
+```
+
+---
+
+## Step Mapping (SD Coach → LeetCode Coach)
+
+For maintainers working on both skills:
+
+```
+SD Coach              LeetCode Coach         Notes
+────────              ──────────────         ─────
+Step A (Review)    →  Step A (Review)        Same
+Step B (Intro)     →  Step B (Read Problem)  Adapted: concept intro → problem reading
+Step C (Teaching)  →  Step C (Pattern)       Adapted: topic chunks → pattern template
+Step D (PoC)       →  Step D (Brute Force)   NEW content: hands-on PoC → brute force solving
+—                  →  Step E (Optimal)       NEW: no SD Coach equivalent
+Step E (Simon)     →  (merged into Step F)   Simon drill merged into Feynman Gate
+Step F (Interview) →  Step G (Mock)          Same concept, shifted letter
+Step G (Notes)     →  Step H (Notes)         Same concept, shifted letter
+Step H (Progress)  →  Step I (Progress)      Same concept, shifted letter
+```
 
 ---
 
