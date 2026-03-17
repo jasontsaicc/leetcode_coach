@@ -2,27 +2,53 @@
 
 Use this template for every session's notes. Save as `notes/patternXX-problem-name.md`.
 
+Language follows `notes_lang` setting in `progress.md` Student Info:
+- `mixed` (default): Pattern 摘要 + 錯誤 in Chinese, How to Say It + code in English
+- `english`: All English
+- `chinese`: 70% Chinese / 30% English (only terms and code in English)
+
 ---
 
-## Pattern One-Liner
-> [One sentence summary of the Pattern — in YOUR words, interview-ready]
+## Pattern 摘要
+> [用自己的話，一句話總結這個 Pattern — 面試時能直接說出來]
 
-## Approach
-- **Brute Force:** [description] — Time O(?), Space O(?)
-- **Optimal:** [description] — Time O(?), Space O(?)
-- **Key Insight:** [why optimal works — what's the core idea that makes it faster?]
+## 解法 (Approach)
+- **暴力法 (Brute Force):** [中文描述做法] — Time O(?), Space O(?)
+- **最佳解 (Optimal):** [中文描述做法] — Time O(?), Space O(?)
+- **關鍵洞察 (Key Insight):** [為什麼最佳解比較快？核心想法是什麼？]
 
-## 🔴 My Mistakes & Misconceptions
+## 💻 My Code
 
-| What I Thought | Reality | Why I Was Wrong |
-|---|---|---|
-| (original wrong understanding) | (correct understanding) | (why the misconception happened) |
+> Copied from workspace file. Keep both brute force and optimal (if different).
+
+```python
+# Brute Force
+# (paste from workspace)
+
+# Optimal (if different)
+# (paste from workspace)
+```
+
+## ⚡ Edge Cases
+- [列出這題需要注意的 edge cases]
+- 例如：空陣列、單一元素、全部相同、負數、溢位...
 
 Rules:
-- Record every wrong answer, misconception, or confusion point from the session
-- "What I Thought" must contain the actual wrong understanding, not be blank
-- If genuinely no mistakes → write "No mistakes this session" (this should be rare)
-- This section is the priority target for review sessions
+- 每題至少列出 3 個 edge cases
+- 標記你在解題時漏掉的（⚠️）
+- 這是面試扣分重災區，復習時優先看
+
+## 🔴 我的錯誤
+
+| 我以為 | 實際上 | 為什麼錯 |
+|--------|--------|----------|
+| (原本的錯誤理解) | (正確的理解) | (為什麼會有這個誤解) |
+
+Rules:
+- 記錄每一個錯誤答案、誤解、卡住的地方
+- 「我以為」欄位必須寫出具體的錯誤理解，不能空白
+- 如果真的沒有錯誤 → 寫 "本次無錯誤"（這應該很少見）
+- 這個 section 是 Weekly Review 的優先複習目標
 
 ## 🎤 How to Say It in Interview
 

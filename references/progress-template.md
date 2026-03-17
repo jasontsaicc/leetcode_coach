@@ -17,12 +17,13 @@
 | **Session count** | N |
 | **Last weekly review** | Session #N (YYYY-MM-DD) |
 | **Problems solved** | X / 136 |
+| **Notes language** | mixed / english / chinese |
 
 ---
 
 ## Current Session (Breakpoint)
 
-> Updated when session is interrupted or paused. Cleared when session completes normally.
+> Auto-updated at the START of each step (A→B→C...) so progress is preserved even if the terminal closes unexpectedly. Cleared when session completes normally (Step I).
 
 | Field | Value |
 |-------|-------|
@@ -107,6 +108,16 @@
 
 > Built incrementally: one new entry per session in Step H.
 > Use this as a speed-review before mock interviews and real interviews.
+
+---
+
+## Weekly Review History
+
+| Session | Patterns Reviewed | Weak Spots | Notes |
+|---------|-------------------|------------|-------|
+| | | | |
+
+> One row per Weekly Review. Helps identify recurring weaknesses across reviews.
 
 ---
 

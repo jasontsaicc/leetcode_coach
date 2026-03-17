@@ -77,7 +77,7 @@
       "id": 13,
       "category": "phase-gate",
       "prompt": "I just finished the last problem in Phase 0 (Stack category). What's next?",
-      "expected_output": "Should trigger Phase Gate (Phase 0 → 1). Should give an unseen Easy problem, 15 min time limit. Should explicitly state this is a Phase Gate and the student needs to pass to proceed to Phase 1. Phase 0 Gate does NOT require complexity analysis."
+      "expected_output": "Should trigger Phase Gate (Phase 0 → 1). Should give an unseen Easy problem. Should explicitly state this is a Phase Gate and the student needs to pass to proceed to Phase 1. Phase 0 Gate does NOT require complexity analysis."
     },
     {
       "id": 14,
@@ -120,6 +120,36 @@
       "category": "adversarial",
       "prompt": "The optimal solution for Two Sum is to use a HashMap where you store each number and check if the complement exists. Time O(n), Space O(n).",
       "expected_output": "Should detect that the student is reciting the answer without being asked to solve it. Should test understanding: 'That's the right approach. But can you explain WHY the HashMap makes this O(n) instead of O(n²)? What's the key insight?' If student can't explain the WHY, should mark as not truly understood and reteach the concept."
+    },
+    {
+      "id": 21,
+      "category": "workspace",
+      "prompt": "We're on Step D for Valid Anagram. I'm ready to write code.",
+      "expected_output": "Should create workspace/002-valid-anagram.py with the class Solution and function signature (def isAnagram(self, s: str, t: str) -> bool). Should tell the student the file is ready and to say 'check' when done. Should NOT write the solution in the file."
+    },
+    {
+      "id": 22,
+      "category": "workspace",
+      "prompt": "check",
+      "expected_output": "Should read the student's workspace file and analyze the code. Should check for logic errors, syntax issues, and edge cases. Should use Feynman method to guide corrections (ask questions, don't just fix). Should NOT rewrite the student's code for them."
+    },
+    {
+      "id": 23,
+      "category": "adversarial",
+      "prompt": "Here's my solution for Two Sum:\ndef twoSum(self, nums, target):\n    seen = {}\n    for i, num in enumerate(nums):\n        complement = target - num\n        if complement in seen:\n            return [seen[complement], i]\n        seen[num] = i\n    return []",
+      "expected_output": "Should detect this looks like a polished, complete optimal solution submitted during Step D (brute force step). Should verify understanding: 'That looks solid. Can you explain WHY you chose a HashMap here instead of nested loops? What's the key insight that makes this O(n)?' If the student can explain the WHY, accept it. If not, treat as paste detection and reteach."
+    },
+    {
+      "id": 24,
+      "category": "progress",
+      "prompt": "My progress.md seems broken — the Topic Mastery table is missing some rows and the Problem Log formatting is messed up. Can you help?",
+      "expected_output": "Should read progress.md, identify the formatting issues, explain what's wrong to the student, and help fix the file. Should NOT guess at missing data or silently continue with corrupted state. Should reference progress-template.md for the correct format."
+    },
+    {
+      "id": 25,
+      "category": "progress",
+      "prompt": "I closed the terminal accidentally during Step D last time. When I come back, will you know where I stopped?",
+      "expected_output": "Should explain the breakpoint auto-save system: Breakpoint is updated at the start of each step, so if the terminal was closed during Step D, the breakpoint would show Step D. Should read progress.md to confirm the saved breakpoint and resume from there."
     }
   ]
 }

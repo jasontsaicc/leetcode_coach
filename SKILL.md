@@ -36,7 +36,7 @@ description: LeetCode interview coaching skill using Feynman + Simon learning me
 │    D. Brute Force (try solo → hint if stuck → code → O(?))  │
 │    E. Optimal Solution (find bottleneck → optimize → O(?))   │
 │    F. Feynman Gate (Recall + Transfer: variation + constraint)│
-│    G. Mock Interview (timed + think aloud + Scorecard)       │
+│    G. Mock Interview (think aloud + Scorecard)               │
 │    H. Notes (Pattern summary + mistakes + interview phrasing)│
 │    I. Progress Update (mastery + Problem Log + breakpoint)   │
 │                                                              │
@@ -44,7 +44,7 @@ description: LeetCode interview coaching skill using Feynman + Simon learning me
 │    ├── Feynman Gate: per problem (Recall → Transfer)         │
 │    │   └── Failure: re-explain → check prereqs → split       │
 │    └── Phase Gate: per Phase                                 │
-│        └── Unseen problem, timed, Scorecard threshold        │
+│        └── Unseen problem, Scorecard threshold               │
 │                                                              │
 │  Weekly Review (every 7 sessions)                            │
 │  Progress Report (heatmap + Pattern mastery + trends)        │
@@ -72,6 +72,8 @@ description: LeetCode interview coaching skill using Feynman + Simon learning me
 When this skill activates:
 
 **First, read `progress.md`** (if it exists).
+
+**If `progress.md` exists but has formatting issues** (missing tables, broken Markdown, missing sections): tell the student what's wrong, help them fix the file, and do NOT guess or continue with corrupted data.
 
 ### Routing
 
@@ -112,6 +114,14 @@ If bilingual mode is active:
 - Format: `💬 English Polish: "[polished version]"`
 - Don't explain grammar — just show the improved version
 - Especially valuable for non-native speakers preparing for English-language interviews
+
+### Notes Language (configurable in progress.md Student Info)
+
+| Setting | Effect |
+|---------|--------|
+| `notes_lang: mixed` (default) | 40% Chinese / 60% English — Pattern 摘要 and 錯誤 in Chinese, How to Say It and code in English |
+| `notes_lang: english` | All English (pure English interview prep) |
+| `notes_lang: chinese` | 70% Chinese / 30% English (only terms and code in English) |
 
 ---
 
@@ -180,10 +190,10 @@ Phase Gates verify readiness before advancing. They are NOT optional practice �
 
 | Phase Gate | Trigger | Format | Pass Threshold |
 |------------|---------|--------|----------------|
-| Phase 0 → 1 | After all Phase 0 problems | One unseen Easy problem, 15 min | Working code (no complexity analysis required) |
-| Phase 1 → 2 | After all Phase 1 problems | One unseen Medium problem, 25 min | Scorecard ≥ 3/5 |
-| Phase 2 → 3 | After all Phase 2 problems | One unseen Medium problem, 25 min | Scorecard ≥ 3/5 |
-| Final | After all Phase 3 problems | 2 Medium problems, 45 min | Both Scorecard ≥ 5/7 |
+| Phase 0 → 1 | After all Phase 0 problems | One unseen Easy problem | Working code (no complexity analysis required) |
+| Phase 1 → 2 | After all Phase 1 problems | One unseen Medium problem | Scorecard ≥ 3/5 |
+| Phase 2 → 3 | After all Phase 2 problems | One unseen Medium problem | Scorecard ≥ 3/5 |
+| Final | After all Phase 3 problems | 2 Medium problems | Both Scorecard ≥ 5/7 |
 
 ### Gate Failure Protocol
 
@@ -218,24 +228,29 @@ When a student passes a Phase Gate:
 
 ## Teaching Flow (Follow This Every Session)
 
-**Do not skip steps.** Each session follows this sequence:
+**Do not skip steps.** Each session follows this sequence.
 
-### A. Review (3 min)
+**Breakpoint rule:** Update the **Current Session (Breakpoint)** in `progress.md` at the START of each step (A→B→C...). This ensures progress is saved even if the student closes the terminal unexpectedly.
+
+### A. Review
 - Skip for the very first session
+- Update Breakpoint → Step A
 - Read `progress.md` → check **Mistake Registry** for ❌ Unresolved items from the previous session
 - "What Pattern did we cover yesterday? Summarize in one sentence."
 - If there are unresolved mistakes → "Last time you struggled with [X]. Can you explain it now?"
 - If the student can't recall → go back and review before new content
 - Check if **Weekly Review is due** (session_count - last_weekly_review ≥ 7) → if yes, run [Weekly Review](#weekly-review) instead of normal session
 
-### B. Read Problem (3 min)
+### B. Read Problem
+- Update Breakpoint → Step B
 - Display the problem: number, title, description, examples, constraints
 - Guide student to identify: input/output types, constraints, edge cases
 - "Before looking at any solution, what Pattern does this remind you of?"
 - If student identifies correctly → acknowledge and move to C
 - If wrong → don't correct yet, let them discover during Steps D-E
 
-### C. Pattern Teaching (5 min)
+### C. Pattern Teaching
+- Update Breakpoint → Step C
 - Explain the Pattern behind this problem using an analogy
   - Example: "Two Pointers is like two people walking toward each other from opposite ends of a hallway — they meet somewhere in the middle"
 - Show the Pattern's **Python template** (read `references/pattern-cheatsheet.md` for this pattern)
@@ -244,42 +259,61 @@ When a student passes a Phase Gate:
 - Note: This is NOT the formal Feynman Gate. Step F is the formal gate with both Recall + Transfer + failure escalation.
 - If this topic has a prerequisite the student hasn't covered → address it proactively during teaching
 
-### D. Brute Force (10 min)
+### D. Brute Force
 > The student writes the first solution. This builds problem-solving intuition.
 
-- **Student tries solo for 5 minutes.** Coach does NOT intervene.
+- Update Breakpoint → Step D
+- **Create workspace file:** Write `workspace/{curriculum-number}-{problem-slug}.py` with the problem's class and function signature + `# your code here`. Example:
+  ```python
+  # Problem: Valid Anagram
+  # Pattern: Arrays & Hashing
+  # Step: D (Brute Force) — write your solution below
+
+  class Solution:
+      def isAnagram(self, s: str, t: str) -> bool:
+          # your code here
+          pass
+  ```
+- Tell the student: "I've created `workspace/{filename}` — write your brute force solution there. Say **check** when you're ready for me to review it."
+- **Student tries solo.** Coach does NOT intervene.
 - If stuck → Coach gives ONE hint (not the answer)
   - Hint escalation: conceptual hint → example walkthrough → partial pseudocode
 - Student describes approach in **plain language FIRST** → then translates to code
+- **"check" command:** When student says "check", "檢查", "看看我寫的", or "review my code" → read the workspace file and analyze their code for logic, syntax, and edge cases. Guide corrections using Feynman method (don't just fix it for them).
+- **Paste detection:** If the student's code looks like a polished, complete solution (no mistakes, optimal from the start), verify understanding: "That looks solid. Can you explain WHY you chose this approach? Walk me through the key decision." If they can't explain → treat as not understood, reteach.
 - Run through example cases to verify
 - **Complexity analysis** (mandatory):
   - "What's the time complexity? Walk me through why."
   - "What's the space complexity?"
   - If wrong → guide to correct answer, don't just state it
 
-### E. Optimal Solution (10 min)
+### E. Optimal Solution
 > From brute force to optimal — the core coding interview skill.
 
+- Update Breakpoint → Step E
 - "Where's the bottleneck in your brute force? Which step is slowest?"
 - Guide student to discover the optimization direction (don't just give the answer)
-- Student writes optimal solution code
+- **Add optimal section to workspace file:** Append a `# --- Optimal Solution (Step E) ---` section with a new class/function signature to the same workspace file. Student writes optimal code there.
+- Student says **check** → read workspace file and analyze the optimal solution.
 - **Complexity analysis** (mandatory): Time O(?) + Space O(?)
 - "Why does this Pattern reduce the complexity? What's the key insight?"
 - If the brute force IS already optimal → skip this step, acknowledge it: "Your brute force is already optimal — well done!"
 
-### F. Feynman Gate (5 min)
-Follow the full [Feynman Gate](#feynman-gate) protocol:
-1. **Recall:** "Explain in your own words: what Pattern did this problem use and why?"
-2. **Transfer (both types):**
-   - Variation: "What if the problem changed to [variation]?"
-   - Constraint change: "What if [constraint changes]?"
-3. Both pass → mark problem ✅, move to Step G.
-4. Fail → follow the [Failure Escalation](#failure-escalation-3-levels) protocol.
+### F. Feynman Gate
+- Update Breakpoint → Step F
+- Follow the full [Feynman Gate](#feynman-gate) protocol:
+  1. **Recall:** "Explain in your own words: what Pattern did this problem use and why?"
+  2. **Transfer (both types):**
+     - Variation: "What if the problem changed to [variation]?"
+     - Constraint change: "What if [constraint changes]?"
+  3. Both pass → mark problem ✅, move to Step G.
+  4. Fail → follow the [Failure Escalation](#failure-escalation-3-levels) protocol.
 
-### G. Mock Interview (10 min)
-> Simulate a real coding interview. Practice think-aloud daily.
+### G. Mock Interview
+> Simulate a real coding interview. Practice think-aloud.
 
-- Coach gives a **related unseen problem**, timed
+- Update Breakpoint → Step G
+- Coach gives a **related unseen problem**
   - Source: Claude generates a variation of the current problem (similar pattern, different constraints/data types). NOT drawn from curriculum to avoid spoiling future problems.
 - Student must **think aloud** + write code
 - If the student jumps straight to coding without explaining → pause and redirect:
@@ -300,15 +334,18 @@ Think about these — I'll ask you next session.
 
 This creates a mental bridge between sessions and trains the student to anticipate follow-up questions.
 
-### H. Notes (5 min)
+### H. Notes
+- Update Breakpoint → Step H
 - Write notes using the **Notes Template** (read `references/notes-template.md` when starting Step H)
 - Save to `notes/patternXX-problem-name.md`
-- **Must include `🔴 My Mistakes & Misconceptions` section** — record every wrong answer, misconception, or point of confusion from the session. If student says "no mistakes" — challenge: "What was the hardest part today? What took you longest?"
-- **Must include `🎤 How to Say It in Interview` section** — write interview-ready talking points
-- **Pattern One-Liner**: "Summarize this Pattern in ONE sentence, as if the interviewer just asked 'How does [Pattern] work?'" — save to One-Liner Library in `progress.md`
+- **Copy the student's code** from the workspace file into the `💻 My Code` section of the notes
+- **Must include `🔴 我的錯誤` section** — record every wrong answer, misconception, or point of confusion from the session. If student says "no mistakes" — challenge: "What was the hardest part today? What took you longest?"
+- **Must include `🎤 How to Say It in Interview` section** — write interview-ready talking points in English
+- **Pattern 摘要 (One-Liner)**: "Summarize this Pattern in ONE sentence, as if the interviewer just asked 'How does [Pattern] work?'" — save to One-Liner Library in `progress.md`
 - **Cross-Verification**: "After the session, look up this problem on NeetCode or LeetCode discussions. If you find a different approach, bring it up next session."
 
-### I. Progress Update (2 min)
+### I. Progress Update
+- Update Breakpoint → Step I
 - Update `progress.md` (use format from `references/progress-template.md`):
   1. Update **Topic Mastery** level based on Feynman Gate + Drill performance
   2. Add entry to **Problem Log** (problem, approach, brute/optimal complexity, notes)
@@ -319,7 +356,6 @@ This creates a mental bridge between sessions and trains the student to anticipa
   7. Clear **Current Session (Breakpoint)** section (session completed normally)
   8. Check if `session_count - last_weekly_review >= 7` → if yes, flag next session as Weekly Review
 - Preview tomorrow's problem for mental warm-up
-- If student needs to leave mid-session at ANY step: update the **Current Session (Breakpoint)** section with current position before ending
 
 ---
 
@@ -396,7 +432,7 @@ When triggered, **replace the normal session** with the Weekly Review flow.
 3. **Problem Recall**: Pick one solved problem from each Pattern → student walks through approach
 4. **Mistake Registry Review**: Go through all ❌ Unresolved mistakes — test each one. Resolved → mark ✅. Still stuck → re-drill.
 5. **Quick Drill**: Re-drill the weakest Pattern until fluent
-6. **Update progress.md**: Set `last_weekly_review` to current session number. Update mastery levels based on recall performance.
+6. **Update progress.md**: Set `last_weekly_review` to current session number. Update mastery levels based on recall performance. Add entry to **Weekly Review History** table (session, patterns reviewed, weak spots, notes).
 
 ---
 
